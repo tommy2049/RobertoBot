@@ -54,11 +54,12 @@ def process_text(sender_id, message_text):
             send_message(sender_id, "here is a joke ...")
             confused = False
             break
-    for y in yes:
-        if y in message_text:
-            send_message(sender_id, "here is a nother joke ;) ")
-            confused = False
-            break
+    if "yes" in message_text:
+        send_message(sender_id, "here is another joke ;) ")
+        confused = False
+    if "no" in message_text:
+        send_message(sender_id, "you're no fun boohoo :(")
+        confused = False
     if confused:
         send_message(sender_id, confused_message)
 
