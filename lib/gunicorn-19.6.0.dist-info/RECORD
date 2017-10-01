@@ -49,9 +49,9 @@ gunicorn-19.6.0.dist-info/metadata.json,sha256=J8wtgZ1uHf39U63vZr-tBK7tivgZI45J5
 gunicorn-19.6.0.dist-info/RECORD,,
 gunicorn-19.6.0.dist-info/top_level.txt,sha256=cdMaa2yhxb8do-WioY9qRHUCfwf55YztjwQCncaInoE,9
 gunicorn-19.6.0.dist-info/WHEEL,sha256=AvR0WeTpDaxT645bl5FQxUK6NPsTls2ttpcGJg3j1Xg,110
-../../bin/gunicorn_paster,sha256=FPHjx-sFK-Rtv9uCuIqvdvlRUOu2G-Cuwe8SgX_xbjQ,222
-../../bin/gunicorn,sha256=cuaRgmw70L3LiGT5rnhnOAcH36JzATIWeZG5f0MdCuk,220
-../../bin/gunicorn_django,sha256=3Zwh9bc4Pwac_RgCCQTDAmOVup-zJpsautLkn5ETIcc,222
+../../bin/gunicorn_paster,sha256=3h-sIsuwqMcHi1jOJLVfen7b05xOFfw9nmJgnWOXTHI,265
+../../bin/gunicorn,sha256=-Pw4ZTgPRwQNmj-eQklnoTgnAyizpWOS4WqasTISYXM,263
+../../bin/gunicorn_django,sha256=il6Pa0LZYJj-vG3lhn30RC9gdDi3ffem3QhQ_oeeH-8,265
 gunicorn-19.6.0.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
 gunicorn/instrument/__init__.pyc,,
 gunicorn/http/unreader.pyc,,
