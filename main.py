@@ -39,10 +39,18 @@ joke = ["joke", "jokes"]
 yes = ["yes","sure","ok","yea","ya"]
 confused_message = "I'm sorry I don't know if you liked the joke or not, can you reply with a selfie?"
 
+
+# remove everything after Name
+def split_string(joke):
+    result = ''.join(i for i in joke if not i.isdigit())
+    sep = "Name"
+    result = result.split(sep,1)[0]
+    return result
+
+
 # process user input and customize your message here, by default it echoes whatever you say to it
 def process_text(sender_id, message_text):
     message_text = message_text.lower()
-    # if any(word in message_text for greet in greetings):
     confused = True
     for greet in greetings: 
         if greet in message_text:
@@ -51,11 +59,15 @@ def process_text(sender_id, message_text):
             break
     for j in joke:
         if j in message_text:
-            send_message(sender_id, "here is a joke ...")
+            r = requests.post('https://nahanni.cs.mcgill.ca/getJoke')
+            result = split_string(r.text)
+            send_message(sender_id, result)
             confused = False
             break
     if "yes" in message_text:
-        send_message(sender_id, "here is another joke ;) ")
+        r = requests.post('https://nahanni.cs.mcgill.ca/getJoke')
+        result = split_string(r.text)
+        send_message(sender_id, result)
         confused = False
     if "no" in message_text:
         send_message(sender_id, "you're no fun boohoo :(")
@@ -66,15 +78,24 @@ def process_text(sender_id, message_text):
 
 # does something with the image the user sends
 def process_img(sender_id, message_img):
-    # emotion_ranking = getEmotion(os.environ["AZURE_API"], message_img)
-    # scores = emotion_ranking[0]["scores"]["anger"]
     data={'url': message_img}
     r = requests.post('https://nahanni.cs.mcgill.ca/index', json=data)
     emotion = r.content
-    if emotion is "Happy":
+    if "Happy" in emotion:
+        data={'feedback':'Happy'}
+        r = requests.post('https://nahanni.cs.mcgill.ca/giveFeedback', json=data)
         send_message(sender_id, "I'm glad you liked the joke! do you want another one?")
-    if emotion is "Sad" or "Neutral":
+    elif "Sad" in emotion or "Neutral" in emotion:
+        if emotion is "Sad":
+            data={'feedback':'Sad'}
+            r = requests.post('https://nahanni.cs.mcgill.ca/giveFeedback', json=data)
+        elif emotion is "Neutral":
+            data={'feedback':'Neutral'}
+            r = requests.post('https://nahanni.cs.mcgill.ca/giveFeedback', json=data)
         send_message(sender_id, "Sucks you didn't like the joke, let me tell you another one if you like")
+    else:
+        send_message("woah, you're a mysterious person, I can't tell from your pokerface")
+
 
 @app.route('/', methods=['GET'])
 def verify_fb():
@@ -107,9 +128,6 @@ def webhook():
                         message_img = messaging_event["message"]["attachments"][0]["type"]
                         if messaging_event["message"]["attachments"][0].get("payload"):
                             process_img(sender_id, messaging_event["message"]["attachments"][0]["payload"]["url"] )
-                    # if messaging_event["message"].get("attachments"):
-                    #     message_img = messaging_event["message"]["attachments"]["payload"]["url"]
-                    #     process_img(sender_id, message_img)
 
 
                 if messaging_event.get("delivery"):  # delivery confirmation
