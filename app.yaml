@@ -7,17 +7,9 @@ handlers:
   script: main.app
 
 env_variables:
-  PAGE_ACCESS_TOKEN: "EAAblznOblZAYBAGqOyLMZCSksES47nrjdaeGWQ3Cuj3poJCbJkpEZCm0Vz78djim9X86h9pSqp4M67ntQQ4A9vM1ZARnCUTGAlS3wkE8GZA91JQGGNRQa1U6NZCnZBJqGOrEQH8qvMYsNjt24nZAytWRmFROEoeSt5aTBW25O64MLTsrqpZBPSJN5"
-  VERIFY_TOKEN: "gustavo_is_not_funny"
-  AZURE_API: "26f52223221c42c398b7647b0b5860d4"
-  fbase_apiKey: "AIzaSyDRUoHRhfH65oByJBFFfkFz6CSRLQiOOPw"
-  fbase_authDomain: "jokesbot-ec322.firebaseapp.com"
-  fbase_databaseURL: "https://jokesbot-ec322.firebaseio.com"
-  fbase_projectId: "jokesbot-ec322"
-  fbase_storageBucket: "jokesbot-ec322.appspot.com"
-  fbase_messagingSenderId: "232713130425"
-  fbase_user: "tluo99@gmail.com"
-  fbase_password: "gustavo_is_not_funny"
+  PAGE_ACCESS_TOKEN: ""
+  VERIFY_TOKEN: ""
+
 
 libraries:
 - name: ssl 
